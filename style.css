@@ -12,7 +12,6 @@ body {
   opacity: 0;
   transition: filter 800ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 800ms ease;
   will-change: filter, opacity;
-  overflow-x: hidden !important;
 }
 
 body {
@@ -33,18 +32,51 @@ section::after {
   left: 0;
   content: "";
   width: 100%;
-  height: 80%;
+  height: 100%;
   background: -webkit-linear-gradient(
     top,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 0.8) 80%,
-    rgba(0, 0, 0, 0.8) 100%
+    hsla(0, 0%, 0%, 0) 0,
+    hsla(0, 0%, 0%, 0.3) 40%,
+    hsla(0, 0%, 0%, 0.6) 60%,
+    hsla(0, 0%, 0%, 0.9) 100%
   );
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 0.8) 80%,
-    rgba(0, 0, 0, 0.8) 100%
+    hsla(0, 0%, 0%, 0) 0,
+    hsla(0, 0%, 0%, 0.3) 20%,
+    hsla(0, 0%, 0%, 0.6) 30%,
+    hsla(0, 0%, 0%, 0.9) 100%
+  );
+}
+
+#jk::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(
+    top,
+    hsla(0, 0%, 0%, 0.6) 0,
+    hsla(0, 0%, 0%, 0.4) 15%,
+    hsla(0, 0%, 0%, 0.3) 25%,
+    hsla(0, 0%, 0%, 0.25) 40%,
+
+    hsla(0, 0%, 0%, 0.25) 60%,
+    hsla(0, 0%, 0%, 0.3) 75%,
+    hsla(0, 0%, 0%, 0.4) 85%,
+    hsla(0, 0%, 0%, 0.6) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    hsla(0, 0%, 0%, 0.8) 0,
+    hsla(0, 0%, 0%, 0.6) 15%,
+    hsla(0, 0%, 0%, 0.25) 40%,
+
+    hsla(0, 0%, 0%, 0.25) 60%,
+    hsla(0, 0%, 0%, 0.6) 85%,
+    hsla(0, 0%, 0%, 0.8) 100%
   );
 }
 
@@ -56,7 +88,7 @@ section h1 {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   color: #fff;
-  font: normal 300 8dvw/1 "Josefin Sans", sans-serif;
+  font: normal 300 64px/1 "Josefin Sans", sans-serif;
   text-align: center;
   white-space: nowrap;
 }
@@ -71,15 +103,15 @@ section h1 {
     no-repeat;
 }
 
-#thx {
+#thanks {
   background-color: #fff;
 }
 
-#thx::after {
+#thanks::after {
   content: none;
 }
 
-#thx div {
+#thanks div {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -89,45 +121,39 @@ section h1 {
   text-align: center;
 }
 
-#thx h2 {
+#thanks h2 {
   margin-bottom: 60px;
   color: #333;
-  font: normal 400 calc(2em + 2dvw)/1 "Josefin Sans", sans-serif;
+  font: normal 300 64px/1 "Josefin Sans", sans-serif;
   text-align: center;
   white-space: nowrap;
-  -webkit-text-stroke: #1119;
-  -webkit-text-stroke-width: 2px;
 }
 
-#thx p {
+#thanks p {
   color: #333;
   font: normal 400 20px/1 "Josefin Sans", sans-serif;
-  -webkit-text-stroke: #5553;
-  -webkit-text-stroke-width: medium;
 }
 
-#thx p a {
-    color: #9993;
-    text-decoration: none;
-    transition: color 0.3s;
-    opacity: 0.3;
-    font-size: calc(0.6em + 0.5dvw);
+#thanks p a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-#thx p a:hover {
+#thanks p a:hover {
   color: #888;
 }
 
 .demo a {
   position: absolute;
-  bottom: 7dvh;
+  bottom: 6dvh;
   left: 50svw;
   z-index: 2;
   display: inline-block;
   -webkit-transform: translate(0, -50%);
   transform: translate(-50%, -50%);
   color: #fff;
-  font: normal 400 20px/1 "Josefin Sans", sans-serif;
+  font: normal 400 1.25dvmax/1 "Josefin Sans", sans-serif;
   letter-spacing: 0.1em;
   text-decoration: none;
   transition: opacity 0.3s;
@@ -137,11 +163,11 @@ section h1 {
   opacity: 0.5;
 }
 
-section {
+/* section {
   mix-blend-mode: plus-lighter;
   color: white;
   -webkit-text-stroke: 1px white;
-}
+} */
 
 #henlo a {
   padding-top: 70px;
@@ -158,8 +184,8 @@ section {
   border-bottom: 1px solid #fff;
   -webkit-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg);
-  -webkit-animation: sdb06 1.5s infinite;
-  animation: sdb06 1.5s infinite;
+  -webkit-animation: sdb06 2.5s infinite;
+  animation: sdb06 2.5s infinite;
   box-sizing: border-box;
 }
 
@@ -202,7 +228,7 @@ section {
 }
 
 #jk a.scroll-down {
-  padding-top: 11dvh;
+  padding-top: 13dvh;
 }
 
 #jk a.scroll-up .arrow {
@@ -211,23 +237,22 @@ section {
   left: 50%;
   width: 24px;
   height: 24px;
-  margin-left: 12px;
+  margin-left: 11px;
   border-left: 1px solid #fff;
   border-top: 1px solid #fff;
   -webkit-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg);
-  -webkit-animation: sdb07up 1.5s infinite;
-  animation: sdb07up 1.5s infinite;
+  -webkit-animation: sdb07up 2.5s infinite;
+  animation: sdb07up 2.5s infinite;
   box-sizing: border-box;
 }
 
 #jk a.scroll-up .label {
   display: inline-block;
   -webkit-transform: rotate(180deg);
-  transform: rotate(180deg) translate(calc(-50% + 0.5em), -7dvh);
+  transform: rotate(180deg) translate(calc(-50% + 0.18em), -7dvh);
   padding-block: 4px 0;
   padding-inline: 2px 0;
-  /* background-color: #4441 */
 }
 
 #jk a.scroll-down span {
@@ -241,8 +266,8 @@ section {
   border-bottom: 1px solid #fff;
   -webkit-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg);
-  -webkit-animation: sdb07 1.5s infinite;
-  animation: sdb07 1.5s infinite;
+  -webkit-animation: sdb07 2.5s infinite;
+  animation: sdb07 2.5s infinite;
   box-sizing: border-box;
 }
 
