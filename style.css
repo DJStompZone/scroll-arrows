@@ -13,7 +13,9 @@ body {
   opacity: 0;
   transition: filter 800ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 800ms ease;
   will-change: filter, opacity;
-  overflow-x: hidden;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -27,6 +29,8 @@ section {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4rem);
 }
 
 section::after {
@@ -123,6 +127,7 @@ section h1 {
 }
 
 #thanks h2 {
+  white-space: nowrap;
   margin-bottom: 2rem;
   color: #333;
   font-weight: 400;
@@ -133,6 +138,7 @@ section h1 {
   color: #333;
   font-weight: 400;
   font-size: 1.1rem;
+  animation: pulse 750ms infinite alternate ease-in-out;
 }
 
 #thanks .back-link {
@@ -140,6 +146,7 @@ section h1 {
   text-decoration: none;
   transition: color 0.3s, opacity 0.3s;
   opacity: 0.7;
+  animation: pulse 1500ms infinite alternate ease;
 }
 
 #thanks .back-link:hover {
@@ -147,7 +154,17 @@ section h1 {
   opacity: 1;
 }
 
+#thanks .back-link > span {
+  font-size: 1.1rem;
+  display: inline-block;
+  animation: scroll-up 2s infinite ease;
+  animation-fill-mode: both;
+  transform-origin: center center;
+}
+
+
 .scroll-link {
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -159,7 +176,6 @@ section h1 {
   color: #fff;
   text-decoration: none;
   font-weight: 400;
-  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
   letter-spacing: 0.1em;
   text-transform: none;
   cursor: pointer;
@@ -167,7 +183,7 @@ section h1 {
 }
 
 .scroll-link--down {
-  bottom: clamp(2rem, 7vh, 4rem);
+  bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(1.25rem, 4vh, 2.5rem));
 }
 
 .scroll-link--up {
@@ -208,14 +224,26 @@ a:has(span.scroll-link--up) {
   flex-direction: column;
 }
 
-h1, h2, p, a, span {text-shadow: 0px 0px 3px #ffffefcc;}
+h1, h2, p, a, span {
+  text-shadow: 0px 0px 3px #ffffefcc;
+}
+
+@keyframes pulse {
+  0% {transform: scale(1.0);}
+  50% {transform: scale(1.02);}
+  100% {transform: scale(1.0);}
+}
+
 
 @keyframes scroll-up {
   0% {
     transform: translateY(6px) rotatex(180deg) rotatey(180deg) rotatez(-45deg);
     opacity: 0;
   }
-  50% {
+  15% {
+    opacity: 1;
+  }
+  70% {
     opacity: 1;
   }
   100% {
@@ -229,11 +257,30 @@ h1, h2, p, a, span {text-shadow: 0px 0px 3px #ffffefcc;}
     transform: translateY(-6px) rotatex(180deg) rotatey(-180deg) rotatez(135deg);
     opacity: 0;
   }
-  50% {
+  30% {
+    opacity: 1;
+  }
+  70% {
     opacity: 1;
   }
   100% {
     transform: translateY(6px) rotatex(180deg) rotatey(180deg) rotatez(135deg);
     opacity: 0;
   }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.5rem);
+  }
+
+  .scroll-link--down {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 1.5rem);
+  }
+}
+
+@media only screen and (orientation: portrait) and (max-width: 1200px) {
+    html {
+        font-size: clamp(1.75rem, 3.75vw, 4rem)!important;
+    }
 }

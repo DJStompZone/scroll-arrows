@@ -26,7 +26,6 @@ $(function () {
     $(window).on("load", reveal);
   }
 
-  // robust smooth-scroll
   $("a[href^='#']").on("click", function (e) {
     var href = $(this).attr("href");
     if (!href || href === "#") return;
